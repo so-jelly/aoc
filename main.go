@@ -42,7 +42,9 @@ func main() {
 	case 6:
 		fmt.Printf("packet start found at %d\n", PacketStart(in, 4))
 		fmt.Printf("message start found at %d\n", PacketStart(in, 14))
-
+	case 7:
+		smallDirs, delDirSize := DirSize(in, 100000)
+		fmt.Printf("small dirs %v \ndelete dir size %v\n", smallDirs, delDirSize)
 	default:
 		fmt.Println("invalid day selected or not implemented")
 		fmt.Printf("json encoding %s\n", jsonEscape(string(in)))
