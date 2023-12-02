@@ -2,7 +2,6 @@ package main
 
 import (
 	"bufio"
-	"fmt"
 	"regexp"
 	"strconv"
 	"strings"
@@ -41,12 +40,6 @@ func Arrange(b []byte, version int) string {
 
 		if !doneCrates {
 			if string(linerunes[1]) == "1" {
-				fmt.Println("done mapping crates before reversing")
-				for _, pos := range positions {
-					fmt.Println(pos)
-				}
-				fmt.Println("---")
-
 				doneCrates = true
 				reverseCrates = 1
 				continue
@@ -87,12 +80,6 @@ func Arrange(b []byte, version int) string {
 
 			}
 			reverseCrates = -1
-			fmt.Println("reversed")
-			for _, pos := range positions {
-				fmt.Println(*pos)
-			}
-			fmt.Println("---")
-
 		}
 
 		if reverseCrates == -1 {
@@ -126,12 +113,9 @@ func Arrange(b []byte, version int) string {
 	}
 
 	topCrates := ""
-	fmt.Println("final config")
-	for pos, stack := range positions {
-		fmt.Println(pos, *stack)
+	for _, stack := range positions {
 		topCrates = topCrates + stack.Pick(1)[0]
 	}
-	fmt.Println("---")
 
 	return topCrates
 }
