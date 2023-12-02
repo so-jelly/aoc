@@ -32,6 +32,7 @@ func main() {
 		fmt.Printf("your score is %d\nyour optimal score is: %d\n", score, optimalScore)
 	default:
 		fmt.Println("invalid day selected or not implemented")
+		fmt.Printf("json encoding %s\n", jsonEscape(string(in)))
 	}
 
 }
