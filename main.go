@@ -1,48 +1,37 @@
 package main
 
 import (
-	"bufio"
+	"flag"
 	"fmt"
+	"io"
 	"os"
-	"strconv"
 )
 
+var dayFlag = flag.Int("d", 0, "adevent of code day")
+
 func main() {
-	info, err := os.Stdin.Stat()
+
+	flag.Parse()
+
+	in, err := io.ReadAll(os.Stdin)
 	if err != nil {
 		panic(err)
 	}
 
-	if info.Mode()&os.ModeCharDevice != 0 || info.Size() <= 0 {
-		fmt.Println("Need input")
-		return
+	// to gather test data
+	// fmt.Printf("json encoding: %s", jsonEscape(string(in)))
+
+	fmt.Printf("evaluating for day %d!\n", *dayFlag)
+	switch day := dayFlag; *day {
+	case 1:
+		e := GetElfCalories(in)
+		fmt.Printf("max: %d\n", e.MaxCalories())
+		fmt.Printf("sum top three: %d\n", e.SumTopThree())
+	case 2:
+		score, optimalScore := ScoreRPStournament(in)
+		fmt.Printf("your score is %d\nyour optimal score is: %d\n", score, optimalScore)
+	default:
+		fmt.Println("invalid day selected or not implemented")
 	}
 
-	scanner := bufio.NewScanner(os.Stdin)
-	var elfCalories []int
-	var currentElfCalories int
-
-	for scanner.Scan() {
-		if scanner.Text() == "" {
-			elfCalories = append(elfCalories, currentElfCalories)
-			currentElfCalories = 0
-			continue
-		}
-		calories, err := strconv.Atoi(scanner.Text())
-		if err != nil {
-			fmt.Println("input should be a list of integers")
-			panic(err)
-		}
-		currentElfCalories += calories
-	}
-	// add the last elf
-	elfCalories = append(elfCalories, currentElfCalories)
-
-	var maxCalories int
-	for _, calories := range elfCalories {
-		if calories > maxCalories {
-			maxCalories = calories
-		}
-	}
-	fmt.Println(maxCalories)
 }
