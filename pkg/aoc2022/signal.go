@@ -3,10 +3,9 @@ package aoc2022
 import (
 	"bufio"
 	"fmt"
+	"slices"
 	"strconv"
 	"strings"
-
-	"golang.org/x/exp/slices"
 )
 
 func CalcSignals(b []byte) (int, string) {

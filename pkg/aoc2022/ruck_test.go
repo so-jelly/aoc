@@ -3,7 +3,7 @@ package aoc2022
 import (
 	"testing"
 
-	"golang.org/x/exp/slices"
+	"slices"
 )
 
 func TestLettersToInts(t *testing.T) {

@@ -6,7 +6,7 @@ import (
 	"strconv"
 	"strings"
 
-	"golang.org/x/exp/slices"
+	"slices"
 )
 
 type ElfCalories []int

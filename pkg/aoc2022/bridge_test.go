@@ -1,9 +1,8 @@
 package aoc2022
 
 import (
+	"slices"
 	"testing"
-
-	"golang.org/x/exp/slices"
 )
 
 func TestBridgeStep(t *testing.T) {

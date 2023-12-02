@@ -4,9 +4,8 @@ import (
 	"bufio"
 	"errors"
 	"fmt"
+	"slices"
 	"strings"
-
-	"golang.org/x/exp/slices"
 )
 
 var lettersToInt map[string]int
