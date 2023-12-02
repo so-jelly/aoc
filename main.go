@@ -33,6 +33,10 @@ func main() {
 	case 3:
 		fmt.Printf("bag prio: %d\n", BagPriorities(in))
 		fmt.Printf("group prio: %d\n", GroupPriorities(in))
+	case 4:
+		fmt.Printf("section full overlaps: %d\n", FullOverlaps(in))
+		fmt.Printf("section partial overlaps: %d\n", PartialOverlaps(in))
+
 	default:
 		fmt.Println("invalid day selected or not implemented")
 		fmt.Printf("json encoding %s\n", jsonEscape(string(in)))
