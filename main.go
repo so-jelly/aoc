@@ -36,6 +36,9 @@ func main() {
 	case 4:
 		fmt.Printf("section full overlaps: %d\n", FullOverlaps(in))
 		fmt.Printf("section partial overlaps: %d\n", PartialOverlaps(in))
+	case 5:
+		fmt.Printf("top crates on each stack after moving %s version 9000\n", Arrange(in, 9000))
+		fmt.Printf("top crates on each stack after moving %s version 9001\n", Arrange(in, 9001))
 
 	default:
 		fmt.Println("invalid day selected or not implemented")
