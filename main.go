@@ -39,6 +39,9 @@ func main() {
 	case 5:
 		fmt.Printf("top crates on each stack after moving %s version 9000\n", Arrange(in, 9000))
 		fmt.Printf("top crates on each stack after moving %s version 9001\n", Arrange(in, 9001))
+	case 6:
+		fmt.Printf("packet start found at %d\n", PacketStart(in, 4))
+		fmt.Printf("message start found at %d\n", PacketStart(in, 14))
 
 	default:
 		fmt.Println("invalid day selected or not implemented")
