@@ -1,4 +1,4 @@
-package main
+package aoc2022
 
 import (
 	"bufio"
@@ -41,7 +41,7 @@ func CalcSignals(b []byte) (int, string) {
 		for i := addCycle; i > 0; i-- {
 			crtLines := []int{1, 2, 3, 4, 5, 6}
 			if cycles%40 == 0 && slices.Contains(crtLines, cycles/40) {
-				draw = draw + fmt.Sprintf("\n")
+				draw = draw + "\n"
 				currentPos = 0
 			}
 			litOrUnlit = unlit

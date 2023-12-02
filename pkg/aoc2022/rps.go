@@ -1,4 +1,4 @@
-package main
+package aoc2022
 
 import (
 	"bufio"
@@ -10,6 +10,7 @@ import (
 )
 
 const (
+	/* trunk-ignore(golangci-lint/staticcheck) */
 	RockCall         string = "A"
 	PaperCall               = "B"
 	ScissorsCall            = "C"
@@ -20,6 +21,7 @@ const (
 
 const (
 	// 1 for Rock, 2 for Paper, and 3 for Scissors
+	/* trunk-ignore(golangci-lint/staticcheck) */
 	RockValue     int = 1
 	PaperValue        = 2
 	ScissorsValue     = 3

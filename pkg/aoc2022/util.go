@@ -1,8 +1,8 @@
-package main
+package aoc2022
 
 import "encoding/json"
 
-func jsonEscape(i string) string {
+func JsonEscape(i string) string {
 	b, err := json.Marshal(i)
 	if err != nil {
 		panic(err)

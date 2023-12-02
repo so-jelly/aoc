@@ -1,4 +1,4 @@
-package main
+package aoc2022
 
 import (
 	"encoding/json"
@@ -22,7 +22,9 @@ type TestRPSDatum struct {
 func getRPStest(fileName string) *TestRPSData {
 	in, _ := os.ReadFile(RPStestdata)
 	testData := &TestRPSData{}
-	json.Unmarshal(in, &testData)
+	if err := json.Unmarshal(in, &testData); err != nil {
+		panic(err)
+	}
 	return testData
 }
 

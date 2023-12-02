@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"io"
 	"os"
+
+	. "github.com/so-jelly/aoc/pkg/aoc2022"
 )
 
 var dayFlag = flag.Int("d", 0, "adevent of code day")
@@ -59,7 +61,7 @@ func main() {
 		fmt.Println(d)
 	default:
 		fmt.Println("invalid day selected or not implemented")
-		fmt.Printf("json encoding %s\n", jsonEscape(string(in)))
+		fmt.Printf("json encoding %s\n", JsonEscape(string(in)))
 	}
 
 }

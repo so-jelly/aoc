@@ -1,4 +1,4 @@
-package main
+package aoc2022
 
 import (
 	"bufio"
@@ -29,7 +29,7 @@ func Arrange(b []byte, version int) string {
 	positions := make([]*crateStack, 1)
 
 	// move 1 from 2 to 1
-	moveRegex := regexp.MustCompile("move (\\d+) from (\\d+) to (\\d+)")
+	moveRegex := regexp.MustCompile(`move (\d+) from (\d+) to (\d+)`)
 
 	for scanner.Scan() {
 		line := scanner.Text()

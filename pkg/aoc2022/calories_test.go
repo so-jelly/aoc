@@ -1,4 +1,4 @@
-package main
+package aoc2022
 
 import (
 	"encoding/json"
@@ -24,7 +24,9 @@ type TestCaloriesDatum struct {
 func getTestCalories(fileName string) *TestCaloriesData {
 	in, _ := os.ReadFile(testCaloriesData)
 	testData := &TestCaloriesData{}
-	json.Unmarshal(in, &testData)
+	if err := json.Unmarshal(in, &testData); err != nil {
+		panic(err)
+	}
 	return testData
 }
 
