@@ -13,7 +13,6 @@ const (
 )
 
 func DirSize(b []byte, maxSize int) (int, int) {
-	// lineReg := regexp.MustCompile("(?P<indent>\\s*)- (?P<path>[\\/[:lower:]](\\.[[:lower:]]+)?) \\((?P<type>[[:lower:]]+)(, size=(?P<size>\\d+))?\\)")
 	pathUsage := make(map[string]int)
 	scanner := bufio.NewScanner(strings.NewReader(string(b)))
 	currentPath := make([]string, 0)
@@ -44,7 +43,6 @@ func DirSize(b []byte, maxSize int) (int, int) {
 
 			for i := 0; i <= len(currentPath); i++ {
 				pathString := strings.Join(currentPath[:i], "/")
-				// fmt.Printf("add %v to %v\n", size, pathString)
 				pathUsage[pathString] = pathUsage[pathString] + size
 			}
 		}
