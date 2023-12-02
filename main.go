@@ -45,6 +45,9 @@ func main() {
 	case 7:
 		smallDirs, delDirSize := DirSize(in, 100000)
 		fmt.Printf("small dirs %v \ndelete dir size %v\n", smallDirs, delDirSize)
+	case 8:
+		seeTrees, scenicScore := SeeTrees(in)
+		fmt.Printf("i see %d trees\nthe best scenic score is %d\n", seeTrees, scenicScore)
 	default:
 		fmt.Println("invalid day selected or not implemented")
 		fmt.Printf("json encoding %s\n", jsonEscape(string(in)))
