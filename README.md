@@ -5,4 +5,4 @@
 
 ## Notes
 
-Day 1 - pipe input, pretty basic
+Day 1 - pipe input, pretty basic:  `pbpaste | go run .`
