@@ -53,7 +53,10 @@ func main() {
 		fmt.Printf("tail/head steps found:%d\n", bs)
 		bs = BridgeStep(in, 10)
 		fmt.Printf("10 knot steps found:%d\n", bs)
-
+	case 10:
+		c, d := CalcSignals(in)
+		fmt.Println("signals found", c)
+		fmt.Println(d)
 	default:
 		fmt.Println("invalid day selected or not implemented")
 		fmt.Printf("json encoding %s\n", jsonEscape(string(in)))
