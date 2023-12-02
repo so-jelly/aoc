@@ -48,6 +48,12 @@ func main() {
 	case 8:
 		seeTrees, scenicScore := SeeTrees(in)
 		fmt.Printf("i see %d trees\nthe best scenic score is %d\n", seeTrees, scenicScore)
+	case 9:
+		bs := BridgeStep(in, 2)
+		fmt.Printf("tail/head steps found:%d\n", bs)
+		bs = BridgeStep(in, 10)
+		fmt.Printf("10 knot steps found:%d\n", bs)
+
 	default:
 		fmt.Println("invalid day selected or not implemented")
 		fmt.Printf("json encoding %s\n", jsonEscape(string(in)))
