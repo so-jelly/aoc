@@ -1,0 +1,11 @@
+version: "3"
+
+env:
+  DAY: "{{ default `1` .Day }}"
+  # PART: "{{ default `1` .Part }}"
+
+tasks:
+  aoc2023:
+    desc: Run Advent of Code 2023
+    cmds:
+      - go run ./cmd/aoc2023
