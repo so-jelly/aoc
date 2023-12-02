@@ -2,7 +2,6 @@ package main
 
 import (
 	"encoding/json"
-	"fmt"
 	"os"
 	"testing"
 )
@@ -33,7 +32,6 @@ func TestScoreRPStournament(t *testing.T) {
 		input := []byte(testCase.Input)
 		haveScore, haveOptimalScore := ScoreRPStournament(input)
 		wantScore, wantOptimalScore := testCase.Score, testCase.OptimalScore
-		fmt.Println(haveScore, haveOptimalScore)
 		if haveScore != wantScore ||
 			haveOptimalScore != wantOptimalScore {
 			t.Errorf("have score %d, optimalscore: %d\nwant score %d, optimalscore:%d\n", haveScore, haveOptimalScore, wantScore, wantOptimalScore)
