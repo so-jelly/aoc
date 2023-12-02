@@ -1,8 +1,8 @@
 version: "3"
 
 env:
-  DAY: "{{ default `1` .Day }}"
-  # PART: "{{ default `1` .Part }}"
+  DAY: 2
+  PART: 2
 
 tasks:
   aoc2023:
