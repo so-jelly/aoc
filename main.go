@@ -30,6 +30,9 @@ func main() {
 	case 2:
 		score, optimalScore := ScoreRPStournament(in)
 		fmt.Printf("your score is %d\nyour optimal score is: %d\n", score, optimalScore)
+	case 3:
+		fmt.Printf("bag prio: %d\n", BagPriorities(in))
+		fmt.Printf("group prio: %d\n", GroupPriorities(in))
 	default:
 		fmt.Println("invalid day selected or not implemented")
 		fmt.Printf("json encoding %s\n", jsonEscape(string(in)))
