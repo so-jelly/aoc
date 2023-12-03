@@ -1,6 +1,7 @@
 package aoc2023
 
 import (
+	"bufio"
 	"fmt"
 	"os"
 	"strconv"
@@ -20,4 +21,9 @@ func GetEnvInt(s string) int {
 		fmt.Printf("error converting environment variable %s to int\n", s)
 	}
 	return i
+}
+
+func scanner() *bufio.Scanner {
+	r := bufio.NewReader(os.Stdin)
+	return bufio.NewScanner(r)
 }

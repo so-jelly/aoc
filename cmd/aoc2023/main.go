@@ -14,6 +14,8 @@ func main() {
 	case 2:
 		Day2()
 		return
+	case 3:
+		Day3()
 	default:
 		fmt.Println("invalid day")
 		return

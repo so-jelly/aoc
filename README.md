@@ -1,8 +1,7 @@
-# Advent of Code 2022
+# Advent of Code
 
 [aoc](https://adventofcode.com/2022/)
 
 ## Notes
 
-pipe input, pretty basic:  `pbpaste | go run . -d 1`
-
+pipe input, pretty basic: `pbpaste | task aoc2023`

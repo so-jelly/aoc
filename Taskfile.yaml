@@ -1,10 +1,15 @@
 version: "3"
 
 env:
-  DAY: 2
+  DAY: 3
   PART: 2
 
 tasks:
+  aoc2022:
+    desc: Run Advent of Code 2022
+    cmds:
+      - go run ./cmd/aoc2022
+
   aoc2023:
     desc: Run Advent of Code 2023
     cmds:
