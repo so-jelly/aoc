@@ -1,8 +1,8 @@
 version: "3"
 
 env:
-  DAY: 6
-  PART: 1
+  DAY: 7
+  PART: 2
 
 tasks:
   aoc2022:
