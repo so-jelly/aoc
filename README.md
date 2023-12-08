@@ -1,7 +1,7 @@
 # Advent of Code
 
-[aoc](https://adventofcode.com/2022/)
+[aoc](https://adventofcode.com)
 
 ## Notes
 
-pipe input, pretty basic: `pbpaste | task aoc2023`
+adjust Taskfile and pipe input, eg: `pbpaste | task aoc2023`
