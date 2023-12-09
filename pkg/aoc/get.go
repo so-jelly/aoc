@@ -50,6 +50,15 @@ func Get(year, day, part int) error {
 		log.Println(err)
 		return err
 	}
+	testPath := fmt.Sprintf("data/%d/%d/example_input.txt", year, day)
+	_, err = os.Stat(testPath)
+	if os.IsNotExist(err) {
+		err = writeToFile(testPath, "")
+		if err != nil {
+			log.Println(err)
+			return err
+		}
+	}
 	c := os.Getenv("AOC_SESSION")
 	if c == "" {
 		return fmt.Errorf("AOC_SESSION env var not set")
