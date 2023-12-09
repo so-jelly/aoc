@@ -1,7 +1,6 @@
 package aoc2023
 
 import (
-	"bufio"
 	"fmt"
 	"os"
 	"strconv"
@@ -23,7 +22,26 @@ func GetEnvInt(s string) int {
 	return i
 }
 
-func scanner() *bufio.Scanner {
-	r := bufio.NewReader(os.Stdin)
-	return bufio.NewScanner(r)
+func gcd(a, b int) int {
+	// Euclidean algorithm
+	for b != 0 {
+		var temp = b
+		b = a % b
+		a = temp
+	}
+	return a
+}
+
+func lcm(a, b int) int {
+	return (a * b / gcd(a, b))
+}
+
+func lcmm(numbers []int) int {
+	if len(numbers) < 2 {
+		return 0
+	}
+	if len(numbers) == 2 {
+		return lcm(numbers[0], numbers[1])
+	}
+	return lcm(numbers[0], lcmm(numbers[1:]))
 }
