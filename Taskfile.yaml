@@ -1,8 +1,9 @@
 version: "3"
 env:
-  AOC_YEAR: '{{.AOC_YEAR | default "2023"}}'
-  AOC_DAY: '{{.AOC_DAY | default "9"}}'
-  AOC_PART: '{{.AOC_PART | default "2"}}'
+  AOC_SESSION: "{{.AOC_SESSION}}"
+  AOC_YEAR: "{{.AOC_YEAR}}"
+  AOC_DAY: "{{.AOC_DAY}}"
+  AOC_PART: "{{.AOC_PART}}"
 tasks:
   day:
     desc: Increment day
@@ -18,17 +19,13 @@ tasks:
   get:
     desc: Get today's data
     cmds:
-      - >
-        go run .
-        -g
-        -y $AOC_YEAR
-        -d $AOC_DAY
-        -p $AOC_PART
+      - go run . -y $AOC_YEAR -d $AOC_DAY -p $AOC_PART -g
+      - echo "you must manaully populate the example input data"
   default:
     desc: Run Advent of Code (make sure to run get for the day)
     cmds:
-      - >
-        go run .
-        -y $AOC_YEAR
-        -d $AOC_DAY
-        -p $AOC_PART
+      - go run . -y $AOC_YEAR -d $AOC_DAY -p $AOC_PART
+  test:
+    desc: Run tests
+    cmds:
+      - go run . -y $AOC_YEAR -d $AOC_DAY -p $AOC_PART -t
