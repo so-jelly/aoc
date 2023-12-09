@@ -1,7 +1,7 @@
 version: "3"
 
 env:
-  DAY: 8
+  DAY: 9
   PART: 2
 
 tasks:
