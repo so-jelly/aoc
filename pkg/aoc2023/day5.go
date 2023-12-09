@@ -4,7 +4,6 @@ import (
 	"bufio"
 	"fmt"
 	"io"
-	"os"
 	"regexp"
 	"strconv"
 	"strings"
@@ -26,15 +25,19 @@ type Range struct {
 	repeats  int
 }
 
-func Day5() {
-	processDay5(bufio.NewReader(os.Stdin))
+func init() {
+	DayFunc[5] = Day5
+}
+
+func Day5(part int, r io.Reader) {
+	processDay5(r, part)
 	fmt.Println("data processed")
 	day5()
 }
 
 var maps = make(map[string]*Map)
 
-func processDay5(r io.Reader) {
+func processDay5(r io.Reader, part int) {
 	scanner := bufio.NewScanner(r)
 	current := &Map{
 		ranges:   []Range{},
@@ -51,7 +54,7 @@ func processDay5(r io.Reader) {
 			continue
 		}
 		if strings.HasPrefix(line, "seeds:") {
-			seeds := getSeeds(line)
+			seeds := getSeeds(line, part)
 			maps["seeds"].numbers = seeds
 			continue
 		}
@@ -69,8 +72,7 @@ func processDay5(r io.Reader) {
 	}
 }
 
-func getSeeds(input string) []int {
-	part := Part() // make sure we have this variable
+func getSeeds(input string, part int) []int {
 	input = strings.Split(input, ":")[1]
 	inputStrings := strings.Fields(input)
 	ints := make([]int, 0, len(inputStrings))

@@ -4,14 +4,17 @@ import (
 	"bufio"
 	"fmt"
 	"io"
-	"os"
 	"strconv"
 	"strings"
 )
 
-func Day6() {
+func init() {
+	DayFunc[6] = Day6
+}
+
+func Day6(part int, r io.Reader) {
 	fmt.Println("Day 6")
-	day6data(bufio.NewReader(os.Stdin))
+	day6data(r)
 	fmt.Println(len(races))
 
 	var possibleWinConditions = 1

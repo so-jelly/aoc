@@ -4,13 +4,17 @@ import (
 	"bufio"
 	"fmt"
 	"io"
-	"os"
 	"strconv"
 	"strings"
 )
 
-func Day9() {
-	d9data(bufio.NewReader(os.Stdin))
+func init() {
+	DayFunc[9] = Day9
+}
+
+func Day9(part int, r io.Reader) {
+	fmt.Println("Day 9")
+	d9data(r)
 	// fmt.Println(data)
 	var next, previous int
 	for _, d := range data {
@@ -25,7 +29,6 @@ func Day9() {
 	}
 	fmt.Println("next (part1):", next)
 	fmt.Println("previous (part2):", previous)
-
 }
 
 var data [][]int

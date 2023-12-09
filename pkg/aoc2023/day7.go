@@ -4,7 +4,6 @@ import (
 	"bufio"
 	"fmt"
 	"io"
-	"os"
 	"slices"
 	"strconv"
 	"strings"
@@ -19,9 +18,7 @@ var playingCards = map[string]int{
 }
 
 func init() {
-	if Day() == 7 && Part() == 2 {
-		playingCards["J"] = 1
-	}
+	DayFunc[7] = Day7
 }
 
 type Hand struct {
@@ -33,16 +30,19 @@ type Hand struct {
 // map of points to hand, avoid duplicates
 var hands = make(map[int]Hand)
 
-func Day7() {
-	day7processdata(bufio.NewReader(os.Stdin))
+func Day7(part int, r io.Reader) {
+	if part == 2 {
+		playingCards["J"] = 1
+	}
+	day7processdata(r, part)
 	winners()
 }
 
-func day7processdata(r io.Reader) {
+func day7processdata(r io.Reader, part int) {
 	scanner := bufio.NewScanner(r)
 	for scanner.Scan() {
 		line := scanner.Text()
-		h := newHand(line)
+		h := newHand(line, part)
 		if _, ok := hands[h.points]; ok {
 			panic(fmt.Sprintf("duplicate hand points: %+v, %+v", h, hands[h.points]))
 		}
@@ -50,13 +50,13 @@ func day7processdata(r io.Reader) {
 	}
 }
 
-func newHand(s string) Hand {
+func newHand(s string, part int) Hand {
 	hand := Hand{}
 	hb := strings.Fields(s)
 	for _, v := range hb[0] {
 		hand.cards = append(hand.cards, playingCards[string(v)])
 	}
-	if Part() == 1 {
+	if part == 1 {
 		hand = hand.calculatePoints()
 	} else {
 		hand = hand.d7p2calcHand()

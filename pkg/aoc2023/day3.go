@@ -9,9 +9,13 @@ import (
 	"unicode"
 )
 
-func Day3() {
+func init() {
+	DayFunc[3] = Day3
+}
+
+func Day3(part int, r io.Reader) {
 	getPartsAndSymbols(bufio.NewReader(os.Stdin))
-	switch Part() {
+	switch part {
 	case 1:
 		Day3Part1()
 		return
