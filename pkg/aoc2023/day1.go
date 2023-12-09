@@ -4,13 +4,15 @@ import (
 	"bufio"
 	"fmt"
 	"io"
-	"os"
 	"strings"
 )
 
-func Day1() {
-	r := bufio.NewReader(os.Stdin)
-	i, err := SumCalibrationValues(r)
+func init() {
+	DayFunc[1] = Day1
+}
+
+func Day1(part int, r io.Reader) {
+	i, err := SumCalibrationValues(r, part)
 	if err != nil {
 		panic(err)
 	}
@@ -19,12 +21,11 @@ func Day1() {
 
 // GetCalibrationValue extracts the first and last digit from a string,
 // combines them into a two-digit number, and returns that number.
-func GetCalibrationValue(s string) int {
+func GetCalibrationValue(s string, part int) int {
 	firstDigit := -1
 	lastDigit := -1
-	p := Part()
 
-	switch p {
+	switch part {
 	case 1:
 		for _, r := range s {
 			if '0' <= r && r <= '9' {
@@ -50,7 +51,7 @@ func GetCalibrationValue(s string) int {
 
 // SumCalibrationValues reads lines from an io.Reader, calculates the calibration value for each line,
 // and returns the sum of all calibration values.
-func SumCalibrationValues(r io.Reader) (int, error) {
+func SumCalibrationValues(r io.Reader, part int) (int, error) {
 	scanner := bufio.NewScanner(r)
 	sum := 0
 
@@ -58,7 +59,7 @@ func SumCalibrationValues(r io.Reader) (int, error) {
 		line := scanner.Text()
 		// log := Log.With(zap.String("line", line))
 		// log.Info("scanned line")
-		sum += GetCalibrationValue(line)
+		sum += GetCalibrationValue(line, part)
 	}
 	if err := scanner.Err(); err != nil {
 		return 0, err

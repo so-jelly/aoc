@@ -3,10 +3,46 @@ package aoc2023
 import (
 	"bufio"
 	"fmt"
+	"io"
 	"os"
 	"strconv"
 	"strings"
 )
+
+func init() {
+	DayFunc[2] = Day2
+}
+
+func Day2(part int, r io.Reader) {
+	scanner := bufio.NewScanner(r)
+	games := make([]*Game, 0)
+	for scanner.Scan() {
+		line := scanner.Text()
+		game := ParseGame(line)
+		game.MaxCubeCount()
+		games = append(games, game)
+	}
+	switch part {
+	case 1:
+		var sum int
+		for _, game := range games {
+			if game.PossibleGame() {
+				sum += game.Id
+			}
+		}
+		fmt.Println(sum)
+		return
+	case 2:
+		var sum int
+		for _, game := range games {
+			sum += game.GamePower()
+		}
+		fmt.Println(sum)
+		return
+	}
+
+	fmt.Println("not implemented")
+}
 
 type Game struct {
 	Id        int
@@ -61,38 +97,6 @@ func ParseGame(s string) *Game {
 	}
 	g.Peeks = p
 	return g
-}
-
-func Day2() {
-	r := bufio.NewReader(os.Stdin)
-	scanner := bufio.NewScanner(r)
-	games := make([]*Game, 0)
-	for scanner.Scan() {
-		line := scanner.Text()
-		game := ParseGame(line)
-		game.MaxCubeCount()
-		games = append(games, game)
-	}
-	switch Part() {
-	case 1:
-		var sum int
-		for _, game := range games {
-			if game.PossibleGame() {
-				sum += game.Id
-			}
-		}
-		fmt.Println(sum)
-		return
-	case 2:
-		var sum int
-		for _, game := range games {
-			sum += game.GamePower()
-		}
-		fmt.Println(sum)
-		return
-	}
-
-	fmt.Println("not implemented")
 }
 
 func (g *Game) PossibleGame() bool {

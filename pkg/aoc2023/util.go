@@ -2,12 +2,12 @@ package aoc2023
 
 import (
 	"fmt"
+	"io"
 	"os"
 	"strconv"
 )
 
-func Day() int  { return GetEnvInt("DAY") }
-func Part() int { return GetEnvInt("PART") }
+var DayFunc = make(map[int]func(int, io.Reader))
 
 func GetEnvInt(s string) int {
 	e := os.Getenv(s)

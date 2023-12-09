@@ -4,16 +4,19 @@ import (
 	"bufio"
 	"fmt"
 	"io"
-	"os"
 	"strings"
 	"sync"
 )
 
-func Day8() {
+func init() {
+	DayFunc[8] = Day8
+}
+
+func Day8(part int, r io.Reader) {
 	fmt.Println("Day 8")
-	d8processData(bufio.NewReader(os.Stdin))
+	d8processData(r)
 	// fmt.Println(instructions, d8nodes)
-	if Part() == 1 {
+	if part == 1 {
 		d8travel()
 	} else {
 		d8p2travel()
@@ -57,7 +60,7 @@ func d8travel() {
 	for {
 		steps++
 		node = d8nodes[node][instructions[instructionIndex]]
-		fmt.Println("move to ", node)
+		// fmt.Println("move to ", node)
 		if node == "ZZZ" {
 			fmt.Println(steps)
 			return

@@ -4,21 +4,23 @@ import (
 	"bufio"
 	"fmt"
 	"io"
-	"os"
 	"slices"
 	"strconv"
 	"strings"
 )
 
-func Day4() {
-	processData(bufio.NewReader(os.Stdin))
+func init() {
+	DayFunc[4] = Day4
+}
+
+func Day4(part int, r io.Reader) {
+	processData(r)
 	for _, c := range cards {
 		c.FindWinningNumbers()
 		c.CalculatePoints()
 	}
 
-	p := Part()
-	switch p {
+	switch part {
 	case 1:
 		var points int
 		for _, c := range cards {

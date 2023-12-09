@@ -1,16 +1,34 @@
 version: "3"
-
 env:
-  DAY: 9
-  PART: 2
-
+  AOC_YEAR: '{{.AOC_YEAR | default "2023"}}'
+  AOC_DAY: '{{.AOC_DAY | default "9"}}'
+  AOC_PART: '{{.AOC_PART | default "2"}}'
 tasks:
-  aoc2022:
-    desc: Run Advent of Code 2022
+  day:
+    desc: Increment day
     cmds:
-      - go run ./cmd/aoc2022
+      - sed -i -e "s/AOC_PART=.*/AOC_PART=1/; s/AOC_DAY=.*/AOC_DAY=$((AOC_DAY+1))/" .envrc
+      - direnv allow
+  part:
+    desc: Increment part
+    cmds:
+      - sed -i -e "s/AOC_PART=.*/AOC_PART=$((AOC_PART+1))/" .envrc
+      - direnv allow
 
-  aoc2023:
-    desc: Run Advent of Code 2023
+  get:
+    desc: Get today's data
     cmds:
-      - go run ./cmd/aoc2023
+      - >
+        go run .
+        -g
+        -y $AOC_YEAR
+        -d $AOC_DAY
+        -p $AOC_PART
+  default:
+    desc: Run Advent of Code (make sure to run get for the day)
+    cmds:
+      - >
+        go run .
+        -y $AOC_YEAR
+        -d $AOC_DAY
+        -p $AOC_PART
