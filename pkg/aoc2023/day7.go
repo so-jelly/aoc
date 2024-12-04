@@ -7,6 +7,7 @@ import (
 	"slices"
 	"strconv"
 	"strings"
+	"time"
 )
 
 var playingCards = map[string]int{
@@ -31,11 +32,13 @@ type Hand struct {
 var hands = make(map[int]Hand)
 
 func Day7(part int, r io.Reader) {
+	stime := time.Now()
 	if part == 2 {
 		playingCards["J"] = 1
 	}
 	day7processdata(r, part)
 	winners()
+	fmt.Printf("%dms\n", time.Since(stime).Microseconds())
 }
 
 func day7processdata(r io.Reader, part int) {

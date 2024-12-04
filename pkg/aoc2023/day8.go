@@ -6,6 +6,7 @@ import (
 	"io"
 	"strings"
 	"sync"
+	"time"
 )
 
 func init() {
@@ -13,6 +14,7 @@ func init() {
 }
 
 func Day8(part int, r io.Reader) {
+	stime := time.Now()
 	fmt.Println("Day 8")
 	d8processData(r)
 	// fmt.Println(instructions, d8nodes)
@@ -21,6 +23,7 @@ func Day8(part int, r io.Reader) {
 	} else {
 		d8p2travel()
 	}
+	fmt.Printf("%dns\n", time.Since(stime).Nanoseconds())
 
 }
 
