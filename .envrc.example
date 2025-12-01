@@ -1,5 +1,0 @@
-# shellcheck shell=bash
-export AOC_SESSION=("session" cookie from website)
-export AOC_YEAR=2023
-export AOC_DAY=1
-export AOC_PART=1
